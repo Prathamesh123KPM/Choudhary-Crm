@@ -1,0 +1,6 @@
+{
+  "name": "Choudhary Real Estate CRM",
+  "description": "Production-grade Real Estate CRM for Lead Management, Meta Lead Ads Ingestion, Follow-ups, Site Visits & Sales Performance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

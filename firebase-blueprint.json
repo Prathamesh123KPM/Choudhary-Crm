@@ -1,0 +1,252 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Admin or Sales Employee profile in Choudhary CRM",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "employee"] },
+        "employeeCode": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "lastActiveAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "displayName", "role", "active"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Real Estate Project managed by Choudhary CRM",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "address": { "type": "string" },
+        "category": { "type": "string" },
+        "startingPrice": { "type": "number" },
+        "description": { "type": "string" },
+        "possessionDate": { "type": "string" },
+        "status": { "type": "string" },
+        "reraNumber": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "mapUrl": { "type": "string" },
+        "availableConfigurations": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "location", "startingPrice", "status"]
+    },
+    "InventoryUnit": {
+      "title": "InventoryUnit",
+      "description": "Individual unit or flat in a project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "buildingWing": { "type": "string" },
+        "floorNumber": { "type": "number" },
+        "unitNumber": { "type": "string" },
+        "unitType": { "type": "string" },
+        "carpetAreaSqFt": { "type": "number" },
+        "price": { "type": "number" },
+        "status": { "type": "string", "enum": ["Available", "On Hold", "Booked", "Sold"] },
+        "bookedByLeadId": { "type": "string" },
+        "bookedByEmployeeId": { "type": "string" }
+      },
+      "required": ["id", "projectId", "unitNumber", "price", "status"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "Real Estate Customer Lead captured from Facebook or manual entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "alternatePhone": { "type": "string" },
+        "email": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "city": { "type": "string" },
+        "occupation": { "type": "string" },
+        "preferredLanguage": { "type": "string" },
+        "source": { "type": "string" },
+        "metaLeadId": { "type": "string" },
+        "metaFormName": { "type": "string" },
+        "metaCampaignName": { "type": "string" },
+        "metaAdsetName": { "type": "string" },
+        "metaAdName": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "propertyType": { "type": "string" },
+        "budgetMin": { "type": "number" },
+        "budgetMax": { "type": "number" },
+        "purchasePurpose": { "type": "string" },
+        "purchaseTimeline": { "type": "string" },
+        "loanRequirement": { "type": "boolean" },
+        "assignedEmployeeId": { "type": "string" },
+        "assignedEmployeeName": { "type": "string" },
+        "stage": { "type": "string" },
+        "subStatus": { "type": "string" },
+        "priority": { "type": "string" },
+        "nextFollowupDate": { "type": "string" },
+        "lastContactedAt": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "customerName", "phone", "source", "stage", "subStatus", "priority", "createdAt"]
+    },
+    "Followup": {
+      "title": "Followup",
+      "description": "Scheduled call or task follow-up with lead",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "leadId": { "type": "string" },
+        "leadName": { "type": "string" },
+        "leadPhone": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "employeeName": { "type": "string" },
+        "type": { "type": "string" },
+        "scheduledDate": { "type": "string" },
+        "scheduledTime": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["Upcoming", "Due Today", "Overdue", "Completed", "Rescheduled", "Cancelled"] },
+        "outcome": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["id", "leadId", "employeeId", "type", "scheduledDate", "status"]
+    },
+    "SiteVisit": {
+      "title": "SiteVisit",
+      "description": "Property site visit schedule and feedback",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "leadId": { "type": "string" },
+        "leadName": { "type": "string" },
+        "leadPhone": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "employeeName": { "type": "string" },
+        "visitDate": { "type": "string" },
+        "visitTime": { "type": "string" },
+        "visitorsCount": { "type": "number" },
+        "transportNeeded": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["Requested", "Scheduled", "Confirmed", "Completed", "Rescheduled", "Cancelled", "No-Show"] },
+        "feedback": { "type": "string" },
+        "bookingProbability": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["id", "leadId", "projectId", "employeeId", "visitDate", "status"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Property booking transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "leadId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "unitId": { "type": "string" },
+        "unitNumber": { "type": "string" },
+        "agreedPrice": { "type": "number" },
+        "tokenAmount": { "type": "number" },
+        "paymentMode": { "type": "string" },
+        "tokenDate": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "employeeName": { "type": "string" },
+        "status": { "type": "string", "enum": ["Booking Requested", "Token Pending", "Token Received", "Confirmed", "Agreement Completed", "Cancelled"] },
+        "remarks": { "type": "string" },
+        "adminApproved": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "leadId", "projectId", "unitNumber", "agreedPrice", "tokenAmount", "employeeId", "status"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Audit log of all CRM operations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "leadId": { "type": "string" },
+        "eventType": { "type": "string" },
+        "description": { "type": "string" },
+        "actorId": { "type": "string" },
+        "actorName": { "type": "string" },
+        "actorRole": { "type": "string" },
+        "previousValue": { "type": "string" },
+        "newValue": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "eventType", "description", "actorId", "timestamp"]
+    },
+    "MetaIntegration": {
+      "title": "MetaIntegration",
+      "description": "Facebook Page & Lead Ads integration settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "pageName": { "type": "string" },
+        "pageId": { "type": "string" },
+        "appId": { "type": "string" },
+        "verifyToken": { "type": "string" },
+        "webhookStatus": { "type": "string" },
+        "autoAssignmentEnabled": { "type": "boolean" },
+        "assignmentMode": { "type": "string" },
+        "lastSyncAt": { "type": "string" },
+        "totalLeadsIngested": { "type": "number" }
+      },
+      "required": ["id", "pageName", "verifyToken", "webhookStatus"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles for Admin and Employees"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Real estate property projects"
+    },
+    "/inventoryUnits/{unitId}": {
+      "schema": "InventoryUnit",
+      "description": "Available flat/unit inventory items"
+    },
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Customer leads database"
+    },
+    "/followups/{followupId}": {
+      "schema": "Followup",
+      "description": "Follow-up tasks"
+    },
+    "/siteVisits/{visitId}": {
+      "schema": "SiteVisit",
+      "description": "Property site visit records"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Confirmed and requested property bookings"
+    },
+    "/activityLogs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "CRM system audit log stream"
+    },
+    "/metaIntegrations/{integrationId}": {
+      "schema": "MetaIntegration",
+      "description": "Meta Lead Ads integration config"
+    }
+  }
+}

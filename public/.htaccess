@@ -1,0 +1,43 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. CORS Preflight & API Headers
+  <IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, x-user-id"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  </IfModule>
+
+  # 2. Direct API Routes to PHP or JSON
+  RewriteRule ^api/auth/(.*)$ api/auth.php [QSA,L]
+  RewriteRule ^api/meta/(.*)$ api/meta.php [QSA,L]
+  RewriteRule ^api/leads/?$ api/leads.php [QSA,L]
+  RewriteRule ^api/leads/([^/]+)/?$ api/leads.php?id=$1 [QSA,L]
+  RewriteRule ^api/leads/assign/?$ api/leads.php [QSA,L]
+  RewriteRule ^api/leads/bulk-status/?$ api/leads.php [QSA,L]
+
+  # 3. Serve existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 4. Fallback all Single Page Application (SPA) routes to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Correct MIME types
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType application/json .json
+  AddType image/webp .webp
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+  AddType image/svg+xml .svg
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml
+</IfModule>

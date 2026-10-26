@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --text-xs: 0.775rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  html {
+    font-size: 15px;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  /* Clean, thin & breathable headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500 !important;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+
+  /* Tables: clean, airy and comfortable to read */
+  table {
+    line-height: 1.6;
+  }
+
+  thead th {
+    font-weight: 500 !important;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  tbody td {
+    font-weight: 350;
+    font-size: 13.5px;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ==========================================================================
+   BREATHABLE & THIN TYPOGRAPHY SYSTEM
+   Softens aggressive heavy weights (black/extrabold/bold) into clean, modern weights
+   ========================================================================== */
+
+/* Replace bulky 900/800 bold with refined, lightweight 550 */
+.font-black,
+.font-extrabold {
+  font-weight: 550 !important;
+  letter-spacing: -0.015em;
+}
+
+/* Replace 700 bold with clean, readable medium 500 */
+.font-bold {
+  font-weight: 500 !important;
+}
+
+/* Semibold -> 450 for an airy feel */
+.font-semibold {
+  font-weight: 450 !important;
+}
+
+/* Medium -> 400 */
+.font-medium {
+  font-weight: 400 !important;
+}
+
+/* Normal -> 350 */
+.font-normal {
+  font-weight: 350 !important;
+}
+
+/* Thin & Light */
+.font-light {
+  font-weight: 300 !important;
+}
+
+.font-thin {
+  font-weight: 200 !important;
+}
+
+/* Micro badges, pills and tags: proportional sizing with breathing room */
+.text-xs {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+[class*="text-[10px]"] {
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+}
+
+[class*="text-[10.5px]"] {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+[class*="text-[11px]"] {
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+[class*="text-[12px]"] {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+[class*="text-[13px]"] {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Ensure inputs and buttons feel light and comfortable */
+input, select, textarea {
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+button {
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   APPLE iOS FROSTED GLASSMORPHISM SYSTEM
+   Translucent acrylic materials, specular borders, and deep Gaussian blurs
+   ========================================================================== */
+.glass-ios {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 
+    0 10px 30px -4px rgba(0, 0, 0, 0.06),
+    0 4px 12px -2px rgba(0, 0, 0, 0.03),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.03) !important;
+}
+
+.dark .glass-ios {
+  background: rgba(18, 20, 29, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 
+    0 12px 35px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 
+    0 2px 8px 0 rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .glass-pill {
+  background: rgba(25, 28, 40, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    0 2px 8px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.glass-header-row {
+  background: rgba(248, 249, 252, 0.8) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .glass-header-row {
+  background: rgba(18, 20, 30, 0.8) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   LIQUID GLASS SYSTEM (APPLE iOS FLUID SPECULAR AESTHETIC)
+   Curved organic refractions, subtle chromatic highlights, and fluid response
+   ========================================================================== */
+
+/* Liquid Glass Buttons - High-gloss crystal appearance */
+.liquid-glass-btn {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 245, 255, 0.65) 100%) !important;
+  backdrop-filter: blur(24px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    0 4px 14px -1px rgba(0, 0, 0, 0.07),
+    0 2px 5px -1px rgba(0, 0, 0, 0.04),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.liquid-glass-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(240, 248, 255, 0.85) 100%) !important;
+  transform: translateY(-1.5px) scale(1.02);
+  border-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 
+    0 8px 24px -2px rgba(37, 99, 235, 0.12),
+    0 4px 10px -1px rgba(0, 0, 0, 0.06),
+    inset 0 2px 1.5px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.liquid-glass-btn:active {
+  transform: translateY(0.5px) scale(0.97);
+}
+
+.dark .liquid-glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.12) 100%) !important;
+  backdrop-filter: blur(24px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 
+    0 4px 16px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark .liquid-glass-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.2) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 8px 25px 0 rgba(0, 0, 0, 0.65),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Liquid Glass Primary Accent Button (e.g. Add Lead, Active Toggles) */
+.liquid-glass-primary {
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    0 6px 20px -2px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.liquid-glass-primary:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 10px 28px -2px rgba(0, 0, 0, 0.45),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark .liquid-glass-primary {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%) !important;
+  color: #09090b !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 
+    0 6px 22px 0 rgba(255, 255, 255, 0.15),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+/* Liquid Glass Section / Small Card */
+.liquid-glass-section {
+  background: radial-gradient(120% 120% at 0% 0%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.05),
+    0 4px 10px -2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .liquid-glass-section {
+  background: radial-gradient(120% 120% at 0% 0%, rgba(30, 30, 38, 0.65) 0%, rgba(15, 15, 20, 0.5) 100%) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 
+    0 14px 35px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Liquid Specular Badge */
+.liquid-badge {
+  backdrop-filter: blur(14px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(190%) !important;
+  box-shadow: 
+    0 2px 6px 0 rgba(0, 0, 0, 0.04),
+    inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Luxury Monochrome Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(244, 244, 245, 0.8);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(24, 24, 27, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.8);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(82, 82, 91, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 82, 91, 1);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 1);
+}
